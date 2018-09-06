@@ -6,11 +6,6 @@ using namespace std;
 
 int main()
 {
-	/*string connectors = "!Vv^";
-	string startIfThen = "-";
-	string endIfThen = ">";
-	string parentheses = "()";
-	string statements = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";*/
 	string input;
 
 	char c;
@@ -78,7 +73,6 @@ int main()
 					lastWasAlpha = false;
 					lastWasNot = false;
 					firstRun = false;
-					//parenthesisEndUsed = false;
 					continue;
 				}
 
@@ -109,7 +103,6 @@ int main()
 					lastWasAlpha = false;
 					lastWasConnector = false;
 					lastWasThen = false;
-					//parenthesisEndUsed = false;
 					firstRun = false;
 					continue;
 				}
