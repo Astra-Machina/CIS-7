@@ -1,4 +1,5 @@
-Part 1:
+**Part 1:**
+
 p -> q <=> q' -> p'
 
 q' -> p'
@@ -31,6 +32,10 @@ A(x) => x is an Android phone, B(x) => x is an Apple Phone
 
 Some phones are Android and some phones are Apple, and some phones are both Android and Apple.
 --Not True.
+
+
+
+
 
 **Part 2:**
 
