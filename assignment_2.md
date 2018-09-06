@@ -39,7 +39,6 @@ Some phones are Android and some phones are Apple, and some phones are both Andr
 
 **Part 2:**
 
-#include "stdafx.h"
 #include <iostream>
 #include <string>
 
