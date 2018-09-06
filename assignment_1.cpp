@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <iostream>
 #include <string>
 
@@ -5,12 +6,15 @@ using namespace std;
 
 int main()
 {
-	string connectors = "!Vv^";
+	/*string connectors = "!Vv^";
 	string startIfThen = "-";
 	string endIfThen = ">";
 	string parentheses = "()";
-	string statements = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	string statements = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";*/
 	string input;
+
+	char c;
+	char run;
 
 	bool statementUsed = false;
 	bool lastWasAlpha = false;
@@ -18,192 +22,289 @@ int main()
 	bool lastWasConnector = false;
 	bool lastWasIf = false;
 	bool lastWasThen = false;
-	bool parenthesisStartUsed = false;
-	bool parenthesisEndUsed = false;
+	//bool parenthesisStartUsed = false;
+	//bool parenthesisEndUsed = false;
 	bool isValidWFF = true;
 	bool firstRun = true;
+	bool keepRunning = true;
 
-	cout << "Please enter a logic statement:\n";
-	getline(cin, input);
-
-	for (int i = 0; i < input.length(); i++)
+	do
 	{
-		char c = input[i];
+		statementUsed = false;
+		lastWasAlpha = false;
+		lastWasNot = false;
+		lastWasConnector = false;
+		lastWasIf = false;
+		lastWasThen = false;
+		//parenthesisStartUsed = false;
+		//parenthesisEndUsed = false;
+		isValidWFF = true;
+		firstRun = true;
 
-		if (c == ' ')
-		{
-			continue;
-		}
+		cout << "Please enter a logic statement:\n";
+		getline(cin, input);
 
-		else if (c == '!' || c == 'V' || c == 'v' || c == '^')
+		for (unsigned int i = 0; i < input.length(); i++)
 		{
-			if (c != '!')
+			c = input[i];
+
+			if (c == ' ')
+			{
+				continue;
+			}
+
+			else if (c == '!' || c == 'V' || c == 'v' || c == '^')
+			{
+				if (input[i] != '!' && firstRun)
+				{
+					cout << "An invalid connector has been entered first. String is not a WFF.\n";
+					isValidWFF = false;
+					break;
+				}
+
+				else if (c != '!')
+				{
+					if (lastWasIf || lastWasThen)
+					{
+						cout << "An invalid connector has been entered after a '->'. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
+
+					else if (!lastWasAlpha)
+					{
+						cout << "An invalid connector has been entered after a character. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
+
+					/*else if (input[i - 1] == 'V' || input[i - 1] == 'v' || input[i - 1] == '^')
+					{
+						cout << "An invalid connector was entered after a connector. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
+
+					else if (input[i - 1] == '!')
+					{
+						cout << "An invalid connector has been entered after a '!'. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}*/
+
+					lastWasConnector = true;
+					lastWasAlpha = false;
+					lastWasNot = false;
+					firstRun = false;
+					//parenthesisEndUsed = false;
+					continue;
+				}
+
+				else if (c == '!')
+				{
+					if (lastWasAlpha)
+					{
+						cout << "An invalid '!' has been entered after a statement. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
+
+					else if (lastWasIf)
+					{
+						cout << "An invalid '!' has been entered after a '-'. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
+
+					/*else if (input[i - 1 == ')'])
+					{
+						cout << "An invalid '!' has been entered after a ')'. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}*/
+
+					else if (lastWasNot)
+					{
+						cout << "An invalid '!' has been entered after a '!'. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
+
+					//else if (input[i - 1] == 'V' || input[i - 1] == 'v' || input[i - 1] == '^' && !firstRun)
+					//{
+					//	cout << "An invalid '!' has been entered after a connector. String is not a WFF.\n";
+					//	isValidWFF = false;
+					//	break;
+					//}
+
+					lastWasNot = true;
+					lastWasAlpha = false;
+					lastWasConnector = false;
+					lastWasThen = false;
+					//parenthesisEndUsed = false;
+					firstRun = false;
+					continue;
+				}
+			}
+
+			else if (c == '-' || c == '>')
 			{
 				if (!lastWasAlpha)
 				{
-					cout << "An invalid connector has been entered after a character. String is not a WFF.\n";
+					cout << "An invalid '->' has been entered after a character. String is not a WFF.\n";
 					isValidWFF = false;
 					break;
 				}
 
-				else if (lastWasIf)
+				else if (c == '-')
 				{
-					cout << "An invalid connector has been entered after a '-'. String is not a WFF.\n";
-					isValidWFF = false;
-					break;
+					lastWasIf = true;
+					continue;
 				}
 
-				else if (lastWasConnector)
+				else if (c == '>')
 				{
-					cout << "An invalid connector was entered after a connector. String is not a WFF.\n";
-					isValidWFF = false;
-					break;
+					if (!lastWasIf)
+					{
+						cout << "An invalid '>' has been entered. A '-' must precede this character to form a WFF. "
+							<< "String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
+
+					lastWasThen = true;
+					lastWasConnector = true;
+					lastWasIf = false;
+					lastWasAlpha = false;
+					firstRun = false;
+					//parenthesisEndUsed = false;
+					continue;
 				}
 
-				lastWasConnector = true;
-				lastWasAlpha = false;
-				lastWasNot = false;
-				continue;
+
 			}
 
-			else if (c == '!')
+			else if (isalpha(c))
 			{
 				if (lastWasAlpha)
 				{
-					cout << "An invalid '!' has been entered after a statement. String is not a WFF.\n";
+					cout << "An invalid statement has been entered after a statement. String is not a WFF.\n";
 					isValidWFF = false;
 					break;
 				}
 
-				else if (lastWasIf)
+				/*else if (parenthesisEndUsed)
 				{
-					cout << "An invalid '!' has been entered after a '-'. String is not a WFF.\n";
+					cout << "An invalid statement has been entered after a ')'. String is not a WFF.\n";
 					isValidWFF = false;
 					break;
-				}
+				}*/
 
-				else if (parenthesisEndUsed)
-				{
-					cout << "An invalid '!' has been entered after a ')'. String is not a WFF.\n";
-					isValidWFF = false;
-					break;
-				}
-
-				else if (!lastWasConnector && !firstRun)
-				{
-					cout << "An invalid '!' has been entered after a connector. String is not a WFF.\n";
-					isValidWFF = false;
-					break;
-				}
-
-				lastWasNot = true;
-				lastWasAlpha = false;
+				statementUsed = true;
+				lastWasAlpha = true;
 				lastWasConnector = false;
+				lastWasNot = false;
 				lastWasThen = false;
-				continue;
-			}
-		}
-
-		else if (c == '-' || c == '>')
-		{
-			if (!lastWasAlpha)
-			{
-				cout << "An invalid '->' has been entered after a connector. String is not a WFF.\n";
-				isValidWFF = false;
-				break;
-			}
-
-			else if (c == '-')
-			{
-				lastWasIf = true;
+				firstRun = false;
 				continue;
 			}
 
-			else if (c == '>')
+			/*else if (c == '(' || c == ')')
 			{
-				if (!lastWasIf)
+				if (c == '(')
 				{
-					cout << "An invalid '>' has been entered after a connector. Only acceptable character before '>' is '-'." 
-						<< "\nString is not a WFF.\n";
-					isValidWFF = false;
-					break;
+					if (parenthesisStartUsed)
+					{
+						cout << "An invalid '(' has been entered after a '('. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
+
+					else if (lastWasAlpha)
+					{
+						cout << "An invalid '(' has been entered after a statement. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
+
+					else if (parenthesisEndUsed)
+					{
+						cout << "An invalid '(' has been entered after a ')'. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
+
+					parenthesisStartUsed = true;
+					parenthesisEndUsed = false;
+					lastWasAlpha = false;
+					lastWasConnector = false;
+					lastWasIf = false;
+					lastWasThen = false;
+					lastWasNot = false;
+					continue;
 				}
 
-				lastWasThen = true;
-				lastWasConnector = true;
-				lastWasIf = false;
-				lastWasAlpha = false;	
-			}
+				else if (c == ')')
+				{
+					if (parenthesisEndUsed)
+					{
+						cout << "An invalid ')' has been entered after a ')'. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
 
-			
-		}
+					else if (lastWasConnector || lastWasNot)
+					{
+						cout << "An invalid ')' has been entered after a connector. String is not a WFF.\n";
+						isValidWFF = false;
+						break;
+					}
 
-		else if (isalpha(c))
-		{
-			if (lastWasAlpha)
+					parenthesisEndUsed = true;
+					parenthesisStartUsed = false;
+					lastWasAlpha = false;
+					lastWasConnector = false;
+					lastWasIf = false;
+					lastWasThen = false;
+					lastWasNot = false;
+					continue;
+				}
+			}*/
+
+			else
 			{
-				cout << "An invalid statement has been entered after a statement. String is not a WFF.\n";
-				isValidWFF = false;
+				cout << "An invalid character has been entered. String is not a WFF.\n";
 				break;
 			}
 
-			else if (parenthesisEndUsed)
-			{
-				cout << "An invalid statement has been entered after a ')'. String is not a WFF.\n";
-				isValidWFF = false;
-				break;
-			}
-
-			statementUsed = true;
-			lastWasAlpha = true;
-			lastWasConnector = false;
-			lastWasNot = false;
-			lastWasThen = false;
-			continue;
+			firstRun = false;
 		}
 
-		else if (c == '(' || c == ')')
+		if (!statementUsed || lastWasConnector || lastWasIf || lastWasThen || lastWasNot)
 		{
-			if (c == '(')
-			{
-				if (parenthesisStartUsed)
-				{
-					cout << "An invalid '(' has been entered after a '('. String is not a WFF.\n";
-					isValidWFF = false;
-					break;
-				}
-				parenthesisStartUsed = true;
-				parenthesisEndUsed = false;
-			}
+			cout << "The input must end with a 'statement' else it is not a valid WFF.\n";
+			isValidWFF = false;
+		}
 
-			else if (c == ')')
-			{
-				if (parenthesisEndUsed)
-				{
-					cout << "An invalid ')' has been entered after a ')'. String is not a WFF.\n";
-					isValidWFF = false;
-					break;
-				}
-				parenthesisEndUsed = true;
-				parenthesisStartUsed = false;
-			}
+		cout << (isValidWFF ? "This is a valid WFF." : "This is NOT a valid WFF.") << endl;
+
+		cout << "Would you like to go again? (y/n): ";
+		cin.get(run);
+		cin.ignore();
+
+		if (run == 'y')
+		{
+			keepRunning = true;
+			system("cls");
 		}
 
 		else
 		{
-			cout << "An invalid character has been entered. String is not a WFF.\n";
-			break;
+			keepRunning = false;
 		}
 
-		firstRun = false;
-	}
-
-	if (!statementUsed || lastWasConnector || lastWasIf || lastWasThen || lastWasNot)
-	{
-		isValidWFF = false;
-	}
-
-	cout << (isValidWFF ? "This is a valid WFF." : "This is NOT a valid WFF.") << endl;
+	} while (keepRunning);
 
 	return 0;
 }
+
