@@ -22,8 +22,6 @@ int main()
 	bool lastWasConnector = false;
 	bool lastWasIf = false;
 	bool lastWasThen = false;
-	//bool parenthesisStartUsed = false;
-	//bool parenthesisEndUsed = false;
 	bool isValidWFF = true;
 	bool firstRun = true;
 	bool keepRunning = true;
@@ -36,8 +34,6 @@ int main()
 		lastWasConnector = false;
 		lastWasIf = false;
 		lastWasThen = false;
-		//parenthesisStartUsed = false;
-		//parenthesisEndUsed = false;
 		isValidWFF = true;
 		firstRun = true;
 
@@ -78,20 +74,6 @@ int main()
 						break;
 					}
 
-					/*else if (input[i - 1] == 'V' || input[i - 1] == 'v' || input[i - 1] == '^')
-					{
-						cout << "An invalid connector was entered after a connector. String is not a WFF.\n";
-						isValidWFF = false;
-						break;
-					}
-
-					else if (input[i - 1] == '!')
-					{
-						cout << "An invalid connector has been entered after a '!'. String is not a WFF.\n";
-						isValidWFF = false;
-						break;
-					}*/
-
 					lastWasConnector = true;
 					lastWasAlpha = false;
 					lastWasNot = false;
@@ -116,26 +98,12 @@ int main()
 						break;
 					}
 
-					/*else if (input[i - 1 == ')'])
-					{
-						cout << "An invalid '!' has been entered after a ')'. String is not a WFF.\n";
-						isValidWFF = false;
-						break;
-					}*/
-
 					else if (lastWasNot)
 					{
 						cout << "An invalid '!' has been entered after a '!'. String is not a WFF.\n";
 						isValidWFF = false;
 						break;
 					}
-
-					//else if (input[i - 1] == 'V' || input[i - 1] == 'v' || input[i - 1] == '^' && !firstRun)
-					//{
-					//	cout << "An invalid '!' has been entered after a connector. String is not a WFF.\n";
-					//	isValidWFF = false;
-					//	break;
-					//}
 
 					lastWasNot = true;
 					lastWasAlpha = false;
@@ -177,7 +145,6 @@ int main()
 					lastWasIf = false;
 					lastWasAlpha = false;
 					firstRun = false;
-					//parenthesisEndUsed = false;
 					continue;
 				}
 
@@ -193,13 +160,6 @@ int main()
 					break;
 				}
 
-				/*else if (parenthesisEndUsed)
-				{
-					cout << "An invalid statement has been entered after a ')'. String is not a WFF.\n";
-					isValidWFF = false;
-					break;
-				}*/
-
 				statementUsed = true;
 				lastWasAlpha = true;
 				lastWasConnector = false;
@@ -208,68 +168,6 @@ int main()
 				firstRun = false;
 				continue;
 			}
-
-			/*else if (c == '(' || c == ')')
-			{
-				if (c == '(')
-				{
-					if (parenthesisStartUsed)
-					{
-						cout << "An invalid '(' has been entered after a '('. String is not a WFF.\n";
-						isValidWFF = false;
-						break;
-					}
-
-					else if (lastWasAlpha)
-					{
-						cout << "An invalid '(' has been entered after a statement. String is not a WFF.\n";
-						isValidWFF = false;
-						break;
-					}
-
-					else if (parenthesisEndUsed)
-					{
-						cout << "An invalid '(' has been entered after a ')'. String is not a WFF.\n";
-						isValidWFF = false;
-						break;
-					}
-
-					parenthesisStartUsed = true;
-					parenthesisEndUsed = false;
-					lastWasAlpha = false;
-					lastWasConnector = false;
-					lastWasIf = false;
-					lastWasThen = false;
-					lastWasNot = false;
-					continue;
-				}
-
-				else if (c == ')')
-				{
-					if (parenthesisEndUsed)
-					{
-						cout << "An invalid ')' has been entered after a ')'. String is not a WFF.\n";
-						isValidWFF = false;
-						break;
-					}
-
-					else if (lastWasConnector || lastWasNot)
-					{
-						cout << "An invalid ')' has been entered after a connector. String is not a WFF.\n";
-						isValidWFF = false;
-						break;
-					}
-
-					parenthesisEndUsed = true;
-					parenthesisStartUsed = false;
-					lastWasAlpha = false;
-					lastWasConnector = false;
-					lastWasIf = false;
-					lastWasThen = false;
-					lastWasNot = false;
-					continue;
-				}
-			}*/
 
 			else
 			{
