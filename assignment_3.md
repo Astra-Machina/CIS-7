@@ -75,6 +75,33 @@ City(x) mean “x is a city,” Lives(x,y) mean “x lives in y.”
 ***Extra Credit:***
 
 
+```
+Assuming: p → (q ∧ r), s → r , r → p
+Prove: s → q.
+```
+s		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Assumption*
+s -> r		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*MPP*
+r 		
+r -> p		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Premise*
+p		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*MPP*
+p -> (q ^ r)	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Premise*
+q ^ r		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*MPP*
+q		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Identity*
+s -> q		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Implication*
+
+
+```
+Assuming: ¬(r ∨ s), ¬p → s, p → q. 
+Prove: q
+```
+¬(r v s)	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Assumption*
+¬r ^ ¬s		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*De Morgan*
+¬s		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Identity*
+¬p -> s		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Premise*
+p -> ¬s		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*MTT*
+p		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Identity*
+p -> q		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Premise*
+q		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*MPP*
 
 
 
