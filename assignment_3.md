@@ -42,19 +42,19 @@
 
 (p ^ q)' v r <=> p' v (q' v r)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Implication x3*
 
-(p' v q') v r <=> p' v (q' v r)    *De Morgan*
+(p' v q') v r <=> p' v (q' v r)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*De Morgan*
 
-p' v (q' v r) <=> p' v (q' v r)    *Associative*
+p' v (q' v r) <=> p' v (q' v r)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Associative*
 
 ```(q ∨ r) → p, (q → p) ∧ (r → p)```
 
 (q v r) → p <=> (q → p) ∧ (r → p)
 
-(q v r)' v p <=> (q' v p) ^ (r' v p)    *Implication x3*
+(q v r)' v p <=> (q' v p) ^ (r' v p)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Implication x3*
 
-(q' ^ r') v p <=> (q' v p) ^ (r' v p)    *De Morgan*
+(q' ^ r') v p <=> (q' v p) ^ (r' v p)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*De Morgan*
 
-(q' v p) ^ (r' v p) <=> (q' v p) ^ (r' v p)    *Associative*
+(q' v p) ^ (r' v p) <=> (q' v p) ^ (r' v p)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Associative*
 
 
 ***Part 4:***
