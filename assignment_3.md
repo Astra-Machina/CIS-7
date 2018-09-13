@@ -60,3 +60,21 @@ p' v (q' v r) <=> p' v (q' v r)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Associative*
 ***Part 4:***
 
 
+```
+Let Loves(x,y) mean “x loves y,” Traveler(x) mean “x is a traveler,”
+City(x) mean “x is a city,” Lives(x,y) mean “x lives in y.”
+```
+
+- Translate into English: ∃x∀y∀z(City(x) ∧ Traveler(y) ∧ Lives(z,x)) → (Loves(y,x) ∧ ¬Loves(z,x))
+	- "If there is a traveler, all residents, and all cities, then all travelers love all cities, and all residents do not love all of their cities."
+
+- Translate into Predicate Logic: “No traveler loves the city they live in.”
+	- ∀x∀y ((Traveler(x) ^ City(y) ^ Lives(x,y)) -> ¬Loves(x,y))
+	
+
+***Extra Credit:***
+
+
+
+
+
