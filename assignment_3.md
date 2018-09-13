@@ -18,9 +18,14 @@
 | F | T | F | F | T | T | T | T | 
 | F | F | T | T | F | T | T | T |
 
-**Tautology**
+- **Tautology**
+
 
 ```((A → B)∧(B → ¬A)) → A```
 
 | A | B | A -> B | ¬A | B -> ¬A | (A -> B) ^ (B -> ¬A) | ((A -> B)∧(B -> ¬A)) -> A |
 | --- | --- | --- | --- | --- | --- | --- |
+| T | T | T | F | F | F | T |
+| T | F | F | F | T | F | T |
+| F | T | T | T | T | T | F |
+| F | F | T | T | T | T | F |
