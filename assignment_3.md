@@ -37,6 +37,18 @@
 
 
 ```(p ∧ q) → r , p → (q → r )```
+(p ^ q) -> r <=> p -> (q -> r)
+(p ^ q)' v r <=> p' v (q' v r)		Implication x3
+(p' v q') v r <=> p' v (q' v r)		De Morgan
+p' v (q' v r) <=> p' v (q' v r)		Associative
+
+```(q ∨ r) → p, (q → p) ∧ (r → p)```
+(q v r) → p <=> (q → p) ∧ (r → p)
+(q v r)' v p <=> (q' v p) ^ (r' v p)		Implication x3
+(q' ^ r') v p <=> (q' v p) ^ (r' v p)		De Morgan
+(q' v p) ^ (r' v p) <=> (q' v p) ^ (r' v p)	Associative
 
 
-```(q ∨r ) → p, (q → p)∧(r → p)```
+***Part 4:***
+
+
