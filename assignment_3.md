@@ -29,3 +29,14 @@
 | T | F | F | F | T | F | T |
 | F | T | T | T | T | T | F |
 | F | F | T | T | T | T | F |
+
+- **Neither**
+
+
+***Part 3:***
+
+
+```(p ∧ q) → r , p → (q → r )```
+
+
+```(q ∨r ) → p, (q → p)∧(r → p)```
