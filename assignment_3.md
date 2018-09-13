@@ -83,7 +83,8 @@ s		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Assumption*
 
 s -> r		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*MPP*
 
-r 		
+r 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Identity*
+
 r -> p		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Premise*
 
 p		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*MPP*
