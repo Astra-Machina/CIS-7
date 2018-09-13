@@ -1,4 +1,4 @@
-**Part 1:**
+***Part 1:***
 
 - ```(M -> H) ^ (S -> C)```
 	- "If mathematics is easy, then the homework is done or if it is sunny, then camping is fun."
@@ -7,7 +7,7 @@
 	- (S ^ H) -> (M v C) 
 	
 	
-**Part 2:**
+***Part 2:***
 
 ```(¬B → ¬A) → ((¬B → A) → B)```
 
@@ -17,3 +17,9 @@
 | T | F | F | T | T | F | F | T |
 | F | T | F | F | T | T | T | T | 
 | F | F | T | T | F | T | T | T |
+
+**Tautology**
+
+```((A → B)∧(B → ¬A)) → A```
+
+| 
