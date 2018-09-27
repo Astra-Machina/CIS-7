@@ -116,6 +116,7 @@ Part 2:
 	
 	n = k + 1, (9^(k + 1) - 1)
 	```	
+	
 		(9^k * 9 - 1)
 		
 		So, (9^k - 1) because 9^k * 9 is simply a higher power of 9^k,
