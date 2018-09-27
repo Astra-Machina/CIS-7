@@ -101,7 +101,7 @@ Part 2:
 	((k^3 + 2k)) + (3(k^2 + k + 1))
 	
 	Proof + 3(k^2 + k + 1)
-		Second part is divisibly by 3 because it is all multiplied by 3.
+		Second part is divisible by 3 because it is all multiplied by 3.
 	```
 - *Prove that for n >= 1, 9^n − 1 is divisible by 8 for all non-negative integers Hint: 4^(3+1) = 4 * 4^3 Hint: If 9^n - 1 = 8m, then 	
 	9^n = 8m + 1*
