@@ -17,9 +17,8 @@ Part 1:
 	
 	13 * 13 = 169, (12 * 12) + (5 * 5) = 169
 	```
-- *The sum of two odd integers is even. Hint: By definition, even integers can be expressed as 2n, thus odd integers can be expressed as 	```
-	2n + 1*
-	
+- *The sum of two odd integers is even. Hint: By definition, even integers can be expressed as 2n, thus odd integers can be expressed as 	2n + 1*
+	```
 	(2n + 1) + (2n + 1) = 2n
 	
 	2(2n + 1) = 2n
