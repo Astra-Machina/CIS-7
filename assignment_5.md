@@ -79,7 +79,7 @@ Part 2:
 	```
 - *Prove that for any positive integer number n, n^3 + 2n is divisible by 3*
 	```
-	n > 0, (n^3 + 2n) / 3
+	n > 0, (n^3 + 2n) = 3m
 	
 	
 	n = 1, (1^3 + 2(1)) / 3 = 1
@@ -100,13 +100,18 @@ Part 2:
 	
 	((k^3 + 2k)) + (3(k^2 + k + 1))
 	
-	Proof + 3(k^2 + k + 1)
-		Second part is divisible by 3 because it is all multiplied by 3.
+	3m + 3k^2 + 3k + 3
+	
+	3(m + k^2 + k + 1)
+	
+		Whole function is divisible by 3.
 	```
 - *Prove that for n >= 1, 9^n − 1 is divisible by 8 for all non-negative integers Hint: 4^(3+1) = 4 * 4^3 Hint: If 9^n - 1 = 8m, then 	
 	9^n = 8m + 1*
 	```
-	n = 1, (9^1 - 1) = 8, 8 / 8 = 1
+	9^n - 1 = 8m, 9^n = 8m + 1
+	
+	n = 1, (9^1 - 1) / 8, 8 / 8 = 1 
 	
 	n = 2, (9^2 - 1) = 80, 80 / 8 = 10
 	
@@ -118,6 +123,13 @@ Part 2:
 	
 		(9^k * 9 - 1)
 		
-		So, (9^k - 1) because 9^k * 9 is simply a higher power of 9^k,
-		which is already proven to be divisible by 8.
+		((8m + 1) * 9 - 1)
+		
+		72m + 9 - 1
+		
+		72m + 8
+		
+		8(8m + 1)
+		
+		Whole function is divisible by 8.
 	```
