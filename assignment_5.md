@@ -103,9 +103,9 @@ Part 2:
 	Proof + 3(k^2 + k + 1)
 		Second part is divisibly by 3 because it is all multiplied by 3.
 	```
-- *Prove that for n >= 1, 9^n − 1 is divisible by 8 for all non-negative integers Hint: 4^(3+1) = 4 * 4^3 Hint: If 9^n - 1 = 8m, then 		```
+- *Prove that for n >= 1, 9^n − 1 is divisible by 8 for all non-negative integers Hint: 4^(3+1) = 4 * 4^3 Hint: If 9^n - 1 = 8m, then 	
 	9^n = 8m + 1*
-	
+	```
 	n = 1, (9^1 - 1) = 8, 8 / 8 = 1
 	
 	n = 2, (9^2 - 1) = 80, 80 / 8 = 10
@@ -116,8 +116,8 @@ Part 2:
 	
 	n = k + 1, (9^(k + 1) - 1)
 	
-	(9^k * 9 - 1)
+		(9^k * 9 - 1)
 		
-	So, (9^k - 1) because 9^k * 9 is simply a higher power of 9^k,
-	which is already proven to be divisible by 8.
+		So, (9^k - 1) because 9^k * 9 is simply a higher power of 9^k,
+		which is already proven to be divisible by 8.
 	```
