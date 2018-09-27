@@ -75,7 +75,7 @@ Part 2:
 	
 	... + (4k - 3) + (4k + 1) = (2k^2 - k) + (4k + 1)
 	
-	"" = 2k^2 + 3k + 1
+	" " = 2k^2 + 3k + 1
 	
 - *Prove that for any positive integer number n, n^3 + 2n is divisible by 3*
 
