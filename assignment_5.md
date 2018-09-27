@@ -3,11 +3,12 @@ Part 1:
 ```
 
 - *Show that the square root of 2 is irrational.*
-	
+	``
 	√2 = 1.4142135624
 	
 	k = a/b
-
+	``
+	
 - *If n = 25, 100, or 169, then n is a perfect square and is the sum of two perfect squares.*
 	
 	5 * 5 = 25, (3 * 3) + (4 * 4) = 25
