@@ -17,8 +17,6 @@ int main()
 
 	while (!finish)
 	{
-		start = clock();
-
 		system("cls");
 
 		cout << "Please enter 2 positive integers.\n"
@@ -38,6 +36,8 @@ int main()
 			cout << "Enter Integer 2: ";
 			cin >> b;
 		}
+		
+		start = clock();
 
 		if (a > b)
 		{
