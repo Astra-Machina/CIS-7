@@ -25,19 +25,64 @@ int main()
 		cout << "Please enter 2 positive integers.\n"
 			<< "Enter Integer 1: ";
 		cin >> a;
+
+		while (!cin)
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+			cout << "\nYou must enter an integer.\n"
+				<< "Enter Integer 1: ";
+			cin >> a;
+		}
+
+		while (a < 0)
+		{
+			cout << "The first number you entered was not positive.\n"
+				<< "\nPlease enter a positive integer.\n"
+				<< "Enter Integer 1: ";
+			cin >> a;
+
+			while (!cin)
+			{
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+				cout << "\nYou must enter an integer.\n"
+					<< "Enter Integer 1: ";
+				cin >> a;
+			}
+		}
+
 		cout << "Enter Integer 2: ";
 		cin >> b;
 
-		while (a < 0 || b < 0)
+		while (!cin)
 		{
-			system("cls");
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-			cout << "One or both of the numbers you have entered was not positive.\n"
-				<< "\nPlease enter 2 positive integers.\n"
-				<< "Enter Integer 1: ";
-			cin >> a;
-			cout << "Enter Integer 2: ";
+			cout << "\nYou must enter an integer.\n"
+				<< "Enter Integer 2: ";
 			cin >> b;
+		}
+
+		while (b < 0)
+		{
+			cout << "The second number you entered was not positive.\n"
+				<< "\nPlease enter a positive integer.\n"
+				<< "Enter Integer 2: ";
+			cin >> b;
+
+			while (!cin)
+			{
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+				cout << "\nYou must enter an integer.\n"
+					<< "Enter Integer 2: ";
+				cin >> b;
+			}
 		}
 
 		start = high_resolution_clock::now();
@@ -70,8 +115,6 @@ int main()
 
 		while (tolower(rerun) != 'y' && tolower(rerun) != 'n')
 		{
-			system("cls");
-
 			cout << "Please enter only \"y\" for yes or \"n\" for no.\n"
 				<< "\nRun program again? : ";
 			cin >> rerun;
