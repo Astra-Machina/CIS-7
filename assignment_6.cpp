@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ctime>
 
-
 using namespace std;
 
 int euclideanMethod (int, int);
@@ -78,7 +77,7 @@ int main()
 			finish = false;
 		}
 
-		if (tolower(rerun) == 'n')
+		else if (tolower(rerun) == 'n')
 		{
 			finish = true;
 		}
