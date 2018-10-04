@@ -1,17 +1,20 @@
 #include <iostream>
-#include <ctime>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
-int euclideanMethod (int, int);
+int euclideanMethod (long long, long long);
 
 int main()
 {
-	long long a, b;
-	long long gcd;
-	double time;
+	long long a = 0, b = 0;
+	long long gcd = 0;
+	long double time = 0;
 	char rerun;
-	clock_t start;
+
+	high_resolution_clock::time_point start;
+	high_resolution_clock::time_point stop;
 
 	bool finish = false;
 
@@ -36,9 +39,9 @@ int main()
 			cout << "Enter Integer 2: ";
 			cin >> b;
 		}
-		
-		start = clock();
 
+		start = high_resolution_clock::now();
+		
 		if (a > b)
 		{
 			gcd = euclideanMethod(a, b);
@@ -54,11 +57,13 @@ int main()
 			gcd = euclideanMethod(a, b);
 		}
 
-		cout << "The GCD of " << a << " and " << b << " is " << gcd << endl;
+		stop = high_resolution_clock::now();
 
-		time = (clock() - start) / (double)CLOCKS_PER_SEC;
+		cout << "\nThe GCD of " << a << " and " << b << " is " << gcd << endl;
+		
+		time = duration_cast<nanoseconds>(stop - start).count();
 
-		cout << "The total duration of the calculation is: " << time << " nanoseconds.\n";
+		cout << "\nThe total duration of the calculation is: " << time << " nanoseconds.\n";
 
 		cout << "\nRun program again? y/n: ";
 		cin >> rerun;
@@ -85,7 +90,7 @@ int main()
     return 0;
 }
 
-int euclideanMethod (int num1, int num2)
+int euclideanMethod (long long num1, long long num2)
 {
 	if (num1 == 0)
 	{
