@@ -12,6 +12,8 @@ Requirements:
 - [ ] After each move, wait for user input and clear the screen
 - [ ] Upload your assignment to GitHub
 - [ ] Email james.wilson@rccd.edu with the url to the source code on GitHub
+
+- 2^(n) - 1 [minimum number of moves required of "n" amount of disks.]
 */
 
 #include "stdafx.h"
