@@ -1,19 +1,3 @@
-// Assignment_7.cpp : Defines the entry point for the console application.
-//
-
-/*Write a program that prints out step-by-step instructions for completing the Tower of Hanoi.
-Requirements:
-- [ ] Asks the user for 1 integer indicating the number of disks to use.
-Then have the program solve the Tower of Hanoi problem recursively.
-- [ ] Have the program print out each move (for example: "Move disk from tower A to tower C")
-- [ ] Next have the program print out a visual representation of each tower in between moves.
-For instance, after the first move, the console could show: Tower A: -,2,3 Tower B: -,-,- Tower C: -,-,1 Move disk 1 to Tower C
-- [ ] After each move, wait for user input and clear the screen
-- [ ] Upload your assignment to GitHub
-- [ ] Email james.wilson@rccd.edu with the url to the source code on GitHub
-- 2^(n) - 1 [minimum number of moves required of "n" amount of disks.]
-*/
-
 //#include "stdafx.h"
 //#include "Tower.h"
 #include <iostream>
@@ -45,19 +29,21 @@ public:
 		return this->name;
 	}
 
-	void setVectorSize(int size)
-	{
-		contents.resize(size);
-	}
+	//void setVectorSize(int size)
+	//{
+	//	contents.resize(size);
+	//}
 
 	void pushDisk(string val)
 	{
 		this->contents.push_back(val);
 	}
 
-	void popDisk()
+	string popDisk()
 	{
+		string s = this->contents.back();
 		this->contents.pop_back();
+		return s;
 	}
 
 	string printTower()
@@ -94,7 +80,9 @@ int main()
 
 	do
 	{
-		cout << "How many disks would you like to use (positive integers only): ";
+		cout << "\t\t\t\tWelcome to the Towers of Hanoi auto-solving program\n\n"
+			<< "Warning: If you enter more than 10 disks, this program may take a while to complete.\n"
+			<< "How many disks would you like to use (positive integers only): ";
 		cin >> diskNum;
 		while (diskNum < 1)
 		{
@@ -103,7 +91,7 @@ int main()
 			cin >> diskNum;
 		}
 
-		cout << endl << pow(2, diskNum) - 1 << " moves are needed to solve for " << diskNum << "  disk(s).\n\n";
+		cout << endl << pow(2, diskNum) - 1 << " move(s) is/are needed to solve for " << diskNum << "  disk(s).\n\n";
 
 		//tower1->setVectorSize(diskNum);
 		//tower2->setVectorSize(diskNum);
@@ -146,18 +134,21 @@ int main()
 
 void towersOfHanoi(int disks, Tower* t1, Tower* t2, Tower* t3)
 {
-	if (disks != 0)
+	if (disks > 0)
 	{
 		towersOfHanoi(disks - 1, t1, t3, t2);
 
-		cout << "\nMove disk " << disks << " from tower " << t1->getName() << " to tower " << t2->getName() << endl;
+		cout << "\nMove Disk " << disks << " from Tower " << t1->getName() << " to Tower " << t3->getName() << endl;
 
-		t1->popDisk();
-		t2->pushDisk(to_string(disks));
+		string poppedDisk = t1->popDisk();
+
+		cout << "Current Disk: " << disks << endl << endl;
+
+		t3->pushDisk(poppedDisk);
 
 		cout << orderedTowers(t1, t2, t3) << endl;
 
-		system("pause");
+		//system("pause");
 
 		towersOfHanoi(disks - 1, t2, t1, t3);
 	}
