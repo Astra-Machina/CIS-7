@@ -148,7 +148,7 @@ void towersOfHanoi(int disks, Tower* t1, Tower* t2, Tower* t3)
 
 		cout << orderedTowers(t1, t2, t3) << endl;
 
-		//system("pause");
+		system("pause");
 
 		towersOfHanoi(disks - 1, t2, t1, t3);
 	}
