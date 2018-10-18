@@ -14,11 +14,12 @@ For instance, after the first move, the console could show: Tower A: -,2,3 Tower
 - 2^(n) - 1 [minimum number of moves required of "n" amount of disks.]
 */
 
-#include "stdafx.h"
+//#include "stdafx.h"
 //#include "Tower.h"
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
@@ -26,7 +27,6 @@ class Tower
 {
 private:
 	string name;
-	int size;
 	vector<string> contents;
 
 public:
@@ -40,19 +40,9 @@ public:
 		this->name = n;
 	}
 
-	void setSize(int s)
-	{
-		this->size = s;
-	}
-
 	string getName()
 	{
 		return this->name;
-	}
-
-	const int getSize()
-	{
-		return this->size;
 	}
 
 	void setVectorSize(int size)
@@ -82,9 +72,15 @@ public:
 		return output;
 	}
 
+	void clearContents()
+	{
+		contents.clear();
+	}
+
 };
 
 void towersOfHanoi(int, Tower*, Tower*, Tower*);
+string orderedTowers(Tower*, Tower*, Tower*);
 
 int main()
 {
@@ -107,23 +103,23 @@ int main()
 			cin >> diskNum;
 		}
 
-		tower1->setSize(diskNum);
-		tower2->setSize(diskNum);
-		tower3->setSize(diskNum);
+		cout << endl << pow(2, diskNum) - 1 << " moves are needed to solve for " << diskNum << "  disk(s).\n";
 
-		for (int i = diskNum; i > 0; i--) 
+		//tower1->setVectorSize(diskNum);
+		//tower2->setVectorSize(diskNum);
+		//tower3->setVectorSize(diskNum);
+
+		for (int i = diskNum; i > 0; i--)
 		{
 			string c = to_string(i);
 			tower1->pushDisk(c);
 		}
 
-		cout << tower1->printTower() << endl
-			<< tower2->printTower() << endl
-			<< tower3->printTower() << endl;
+		cout << orderedTowers(tower1, tower2, tower3) << endl;
 
 		system("pause");
 
-		towersOfHanoi(diskNum, tower1, tower3, tower2);
+		towersOfHanoi(diskNum, tower1, tower2, tower3);
 
 		cout << "\nWould you like to run again (Y/N): ";
 		cin >> ans;
@@ -132,6 +128,10 @@ int main()
 		{
 			run = true;
 			system("cls");
+
+			tower1->clearContents();
+			tower2->clearContents();
+			tower3->clearContents();
 		}
 
 		else if (toupper(ans) == 'N')
@@ -144,24 +144,60 @@ int main()
 	return 0;
 }
 
-void towersOfHanoi(int disks, Tower* t1, Tower* t3, Tower* t2)
+void towersOfHanoi(int disks, Tower* t1, Tower* t2, Tower* t3)
 {
-	if (disks > 0)
+	if (disks != 0)
 	{
-		towersOfHanoi(disks - 1, t1, t2, t3);
+		towersOfHanoi(disks - 1, t1, t3, t2);
 
-
-		cout << "Move disk " << disks << " from tower " << t1->getName() << " to tower " << t2->getName() << endl;
+		cout << "\nMove disk " << disks << " from tower " << t1->getName() << " to tower " << t2->getName() << endl;
 
 		t1->popDisk();
 		t2->pushDisk(to_string(disks));
 
-		cout << t1->printTower() << endl
-			<< t2->printTower() << endl
-			<< t3->printTower() << endl;
+		cout << orderedTowers(t1, t2, t3) << endl;
 
 		system("pause");
 
-		towersOfHanoi(disks - 1, t2, t3, t1);
+		towersOfHanoi(disks - 1, t2, t1, t3);
 	}
+}
+
+string orderedTowers(Tower* t1, Tower* t2, Tower* t3)
+{
+	string output;
+
+	if (t1->getName() == "1")
+		output += t1->printTower() + "\n";
+
+	else if(t2->getName() == "1")
+		output += t2->printTower() + "\n";
+
+	else if (t3->getName() == "1")
+		output += t3->printTower() + "\n";
+
+
+
+	if (t1->getName() == "2")
+		output += t1->printTower() + "\n";
+
+	else if (t2->getName() == "2")
+		output += t2->printTower() + "\n";
+
+	else if (t3->getName() == "2")
+		output += t3->printTower() + "\n";
+
+
+
+	if (t1->getName() == "3")
+		output += t1->printTower() + "\n";
+
+	else if (t2->getName() == "3")
+		output += t2->printTower() + "\n";
+
+	else if (t3->getName() == "3")
+		output += t3->printTower() + "\n";
+
+	
+	return output;
 }
