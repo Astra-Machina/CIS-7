@@ -91,7 +91,7 @@ int main()
 			cin >> diskNum;
 		}
 
-		cout << endl << pow(2, diskNum) - 1 << " move(s) is/are needed to solve for " << diskNum << "  disk(s).\n\n";
+		cout << endl << pow(2, diskNum) - 1 << " move(s) is/are needed to solve for " << diskNum << " disk(s).\n\n";
 
 		//tower1->setVectorSize(diskNum);
 		//tower2->setVectorSize(diskNum);
